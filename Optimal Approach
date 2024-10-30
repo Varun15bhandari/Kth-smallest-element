@@ -1,0 +1,16 @@
+
+class Solution {
+    public static int kthSmallest(int[] arr, int k) {
+        // Your code here
+      PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> b - a);
+
+        for (int num : arr) {
+            minHeap.add(num); // Add the current element
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Remove the smallest element if size exceeds k
+            }
+        }
+        // The top of the heap is the k-th largest element
+        return minHeap.peek();
+    }
+}
